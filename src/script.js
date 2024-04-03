@@ -19,10 +19,32 @@ function toggleNav() {
     // animate In - Overlay
     OVERLAY.classList.remove("overlay-slide-left");
     OVERLAY.classList.add("overlay-slide-right");
+    // Animate In - Nav Item
+    NAV_1.classList.remove("slide-out-1");
+    NAV_1.classList.add("slide-in-1");
+    NAV_2.classList.remove("slide-out-2");
+    NAV_2.classList.add("slide-in-2");
+    NAV_3.classList.remove("slide-out-3");
+    NAV_3.classList.add("slide-in-3");
+    NAV_4.classList.remove("slide-out-4");
+    NAV_4.classList.add("slide-in-4");
+    NAV_5.classList.remove("slide-out-5");
+    NAV_5.classList.add("slide-in-5");
   } else {
     // animate Out - overlay
     OVERLAY.classList.remove("overlay-slide-right");
     OVERLAY.classList.add("overlay-slide-left");
+    // Animate Out - Nav Item
+    NAV_1.classList.remove("slide-in-1");
+    NAV_1.classList.add("slide-out-1");
+    NAV_2.classList.remove("slide-in-2");
+    NAV_2.classList.add("slide-out-2");
+    NAV_3.classList.remove("slide-in-3");
+    NAV_3.classList.add("slide-out-3");
+    NAV_4.classList.remove("slide-in-4");
+    NAV_4.classList.add("slide-out-4");
+    NAV_5.classList.remove("slide-in-5");
+    NAV_5.classList.add("slide-out-5");
   }
 }
 
