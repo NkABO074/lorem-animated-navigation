@@ -7,6 +7,22 @@ const NAV_3 = document.getElementById("nav-3");
 const NAV_4 = document.getElementById("nav-4");
 const NAV_5 = document.getElementById("nav-5");
 
+const NAV_ITEM = [NAV_1, NAV_2, NAV_3, NAV_4, NAV_5];
+
+/**
+ * Control navigation animation
+ * @param {String} direction1 The direction you whant to remove.
+ * @param {String} direction2 The direction you whant to add.
+ */
+function navAnimation(direction1, direction2) {
+  NAV_ITEM.forEach((nav, i) => {
+    nav.classList.replace(
+      `slide-${direction1}-${i + 1}`,
+      `slide-${direction2}-${i + 1}`
+    );
+  });
+}
+
 /**
  * Toogle the nav
  */
@@ -17,41 +33,19 @@ function toggleNav() {
   OVERLAY.classList.toggle("overlay-active");
   if (OVERLAY.classList.contains("overlay-active")) {
     // animate In - Overlay
-    OVERLAY.classList.remove("overlay-slide-left");
-    OVERLAY.classList.add("overlay-slide-right");
+    OVERLAY.classList.replace("overlay-slide-left", "overlay-slide-right");
     // Animate In - Nav Item
-    NAV_1.classList.remove("slide-out-1");
-    NAV_1.classList.add("slide-in-1");
-    NAV_2.classList.remove("slide-out-2");
-    NAV_2.classList.add("slide-in-2");
-    NAV_3.classList.remove("slide-out-3");
-    NAV_3.classList.add("slide-in-3");
-    NAV_4.classList.remove("slide-out-4");
-    NAV_4.classList.add("slide-in-4");
-    NAV_5.classList.remove("slide-out-5");
-    NAV_5.classList.add("slide-in-5");
+    navAnimation("out", "in");
   } else {
     // animate Out - overlay
-    OVERLAY.classList.remove("overlay-slide-right");
-    OVERLAY.classList.add("overlay-slide-left");
+    OVERLAY.classList.replace("overlay-slide-right", "overlay-slide-left");
     // Animate Out - Nav Item
-    NAV_1.classList.remove("slide-in-1");
-    NAV_1.classList.add("slide-out-1");
-    NAV_2.classList.remove("slide-in-2");
-    NAV_2.classList.add("slide-out-2");
-    NAV_3.classList.remove("slide-in-3");
-    NAV_3.classList.add("slide-out-3");
-    NAV_4.classList.remove("slide-in-4");
-    NAV_4.classList.add("slide-out-4");
-    NAV_5.classList.remove("slide-in-5");
-    NAV_5.classList.add("slide-out-5");
+    navAnimation("in", "out");
   }
 }
 
 // event listener
 MENU_BARS.addEventListener("click", toggleNav);
-NAV_1.addEventListener("click", toggleNav);
-NAV_2.addEventListener("click", toggleNav);
-NAV_3.addEventListener("click", toggleNav);
-NAV_4.addEventListener("click", toggleNav);
-NAV_5.addEventListener("click", toggleNav);
+NAV_ITEM.array.forEach((nav) => {
+  nav.addEventListener("click", toggleNav);
+});
